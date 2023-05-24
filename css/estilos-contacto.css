@@ -1,0 +1,549 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --colorFondoBlanco: #fff;
+    --colorVerdeOscuro: #217432;
+    --colorVerdeClaro: #31A836;
+    --colorNegro: #000000;
+    --colorVerdeBrillante: #00CC33;
+    --colorError: #ec150e;
+    --colorBlancoLetra: #fff;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--colorFondoBlanco);
+    color: var(--colorNegro);
+    padding: 0 1.5em;
+    font-weight: 400;
+    /* Por defecto el navegador aplica un font-size de 16px */
+    font-size: 16px;
+    min-height: 100vh;
+}
+
+/* Aplica padding y margin a todos elementos dentro del Contenedor*/
+.contenedor>div,
+.contenedor .contenido{
+    padding: .2em;
+    margin: .2em;
+}
+
+/* Se aplica Grid a la caja contenedora*/
+.contenedor {
+    width: 90%;
+    /* max-width: 1200px; */
+    /* 1em=16px  => 1200/16=75em */
+    max-width: 75em;
+    margin: 1.25em auto;
+    display: grid;
+    grid-gap: 0.625em;
+    /* grid-gap: 1.25em; */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, auto);
+
+    grid-template-areas:
+        'titulo       titulo      titulo'
+        'formulario   formulario  horarios'
+        'formulario   formulario  mapa';
+}
+
+/* Se aplican estilos a la clase contenido dentro de la clase contenedor */
+/* y se crea el area de la misma */
+.contenedor .contenido {
+    width: 100%;
+    grid-area: formulario;
+}
+
+/* Se aplican estilos a la clase contacto-horarios dentro de la clase contenedor*/
+.contenedor .contacto-horarios {
+    width: 90%;
+    padding: 0;
+    margin-right: 2em;
+    margin-top: 2em;
+    grid-area: horarios;
+}
+
+/* Se aplican estilos a la clase contacto-mapa dentro de la clase contenedor*/
+.contenedor .contacto-mapa {
+    width: 90%;
+    padding: 0;
+    margin-right: 2em;
+    margin-top: .3em;
+    grid-area: mapa;
+}
+
+/* Se aplican estilos al titulo del contenedor "CONTACTANOS" */
+.contenedor .titulo {
+    font-family: 'Hammersmith One', sans-serif;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: auto;
+    padding: 0;
+    color: var(--colorNegro);
+    grid-area: titulo;
+}
+
+/* Se aplican estilos a la clase contacto-formulario dentro del div dentro de la etiqueta Main */
+.contacto-formulario {
+    animation-duration: 1.5s;
+}
+
+/* Se aplican estilos a la clase de la etiqueta form */
+.form {
+    width: 100%;
+    margin: auto;
+    max-width: 500px;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0, 0, 0/30%);
+    text-align: center;
+}
+
+/* Se aplican estilos a los divs con la clase form-group */
+.form .form-group {
+    position: relative;
+    color: var(--colorVerdeBrillante);
+}
+
+/* Estilo de la clase mensajeError */
+.mensajeError {
+    color: var(--colorError);
+    margin: 1px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Se aplican estilos a la clase form_input referidos a las etiquetas input */
+.form_input {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    color: var(--colorNegro);
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 1.5em .3em;
+    border-bottom: 1px solid var(--colorVerdeOscuro);
+}
+
+/* Estilos que se aplican para que no aparezcan los controles de input type number en el navegador */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Estilos a los input para cuando no se muestra el placeholder */
+.form_input:not(:placeholder-shown) {
+    color: var(--colorNegro);
+}
+
+
+/* Efecto para subir el label cuando el form_input este en la pseudoclase focus(activo en formulario o input)*/
+/* su hermano directo form-label va a ser afectado para esto */
+/* uso de la pseudoclase placeholder-shown para que cuando no se muestre el placeholder su hermano adyacente form-label cambie */
+.form_input:focus+.form-label,
+.form_input:not(:placeholder-shown)+.form-label {
+    transform: translateY(0px) scale(1);
+    transform-origin: left top;
+    color: var(--colorVerdeBrillante);
+    border-bottom: var(--colorVerdeBrillante);
+    font-size: 16px;
+}
+
+
+/* Estilos para la clase form-label */
+.form-label {
+    color: var(--colorVerdeOscuro);
+    pointer-events: none;
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 0px;
+    transform: translateY(10px);
+    transition: transform 0.5s, color .3s;
+}
+
+/* Estilos para la clase form-line */
+.form-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--colorVerdeBrillante);
+    transform: scale(0);
+    transform: left bottom;
+    transition: transform .4s;
+}
+
+/* Estilos para que cuando este activo en un input , cuando el placeholder no se muestre el elemento */
+/* de la clase form-line sea afectado y se usa el selector de hermanos ~ */
+.form_input:focus~.form-line,
+.form_input:not(:placeholder-shown)~.form-line {
+    transform: scale(1);
+}
+
+/* Estilos aplicados a la clase contacto-formulario de la etiqueta textarea dentro de la etiqueta form */
+.contacto-formulario form textarea {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    padding: 1em;
+    font-size: 1em;
+    color: var(--colorNegro);
+    font-weight: bold;
+    margin-top: 2em;
+    resize: none;
+    box-shadow: 0px 7px 15px var(--colorVerdeOscuro);
+}
+
+/* Estilos aplicados a la etiqueta textarea al hacer focus sobre la misma y al ser valida */
+textarea:focus,
+textarea:valid {
+    outline: none;
+    border: none;
+    background-color: var(--colorVerdeClaro);
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+textarea:hover {
+    background-color: var(--colorVerdeBrillante);
+}
+
+/* Se aplica pseudo-elemento para cambiar el color del placeholder */
+textarea::placeholder {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-weight: bolder;
+}
+
+/* Estilos aplicados a la clase contacto-formulario y a la clase titulo-formulario de la etiqueta p del formulario */
+.contacto-formulario .titulo-formulario {
+    font-family: 'Hammersmith One', sans-serif;
+    color: var(--colorNegro);
+    text-align: center;
+    justify-content: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Se aplica la pseudo-clase hover*/
+.contacto-formulario .titulo-formulario:hover {
+    font-size: 1.6em;
+}
+
+/* Estilos que se aplican a la clase form-boton de la etiqueta input referida al boton del formulario */
+.form-boton input {
+    font-family: 'Hammersmith One', sans-serif;
+    width: 100%;
+    background: var(--colorVerdeOscuro);
+    border: none;
+    text-transform: uppercase;
+    padding: 2em;
+    margin-top: 3em;
+    cursor: pointer;
+    color: var(--colorBlancoLetra);
+    border-radius: .5em;
+    font-size: .8em;
+    letter-spacing: 2.5em;
+    font-weight: bold;
+}
+
+/* Estilos aplicados a la clase form-boton con las pseudo-clases hover y focus */
+.form-boton input:hover,
+.form-boton input:focus {
+    background-color: var(--colorVerdeBrillante);
+    color: var(--colorNegro);
+    transition: 1s ease-out;
+    outline: 0;
+    box-shadow: 0px 7px 15px var(--colorVerdeOscuro);
+}
+
+
+/* Estilos aplicados a la clase contacto-horarios */
+.contacto-horarios {
+    background-color: var(--colorVerdeClaro);
+    animation-duration: 1.5s;
+    height: 450px;
+    box-shadow: 0px 7px 15px var(--colorVerdeOscuro);
+    align-items: center;
+}
+
+/* Se aplica pseudo-clase hover */
+.contacto-horarios:hover {
+    background-color: var(--colorVerdeBrillante);
+}
+
+/* Estilos aplicados a las etiquetas dentro del div de la clase contacto-horarios */
+.contacto-horarios h2,
+.contacto-horarios ul,
+.contacto-horarios p {
+    text-align: center;
+    color: var(--colorNegro);
+    margin: 1.5em 0;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Estilo para la etiqueta h2 dentro de la clase contacto-horarios */
+.contacto-horarios h2 {
+    font-family: 'Hammersmith One', sans-serif;
+}
+
+/* Se aplica pseudo-clase hover */
+.contacto-horarios h2:hover {
+    font-size: 1.4em;
+}
+
+/* Estilos aplicados a la etiqueta ul dentro del div de la clase contacto-horarios */
+.contacto-horarios ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilos aplicados a las etiquetas li dentro de las etiquetas ul dentro de la clase contacto-horarios*/
+.contacto-horarios ul li {
+    padding: .5em;
+}
+
+/* Estilos aplicados a las etiquetas p dentro de las etiquetas li dentro de las etiqutas ul*/
+/* dentro de la clase contacto-horarios */
+.contacto-horarios ul li p {
+    display: inline;
+    padding: .5em;
+}
+
+/* Se aplica pseudo-clase hover sobre los iconos */
+li img:hover {
+    width: 45px;
+}
+
+
+/* Estilos de la clase contacto-mapa */
+.contacto-mapa {
+    animation-duration: 1.5s;
+    height: 500px;
+}
+
+
+/* Estilos del iframe dentro de la clase contacto-mapa */
+.contacto-mapa iframe {
+    width: 550px;
+    height: 380px;
+    margin: 0;
+    padding: 1em;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo de la etiqueta h2 dentro de la clase contacto-mapa */
+.contacto-mapa h2 {
+    font-family: 'Hammersmith One', sans-serif;
+    text-align: center;
+    justify-content: center;
+    color: var(--colorNegro);
+    font-size: 1.5em;
+    margin: 1em;
+}
+
+/* Se aplica pseudo-clase hover en la etiqueta h2 dentro de la clase contacto-mapa */
+.contacto-mapa h2:hover {
+    font-size: 1.6em;
+}
+
+
+
+/* Responsive Design */
+/* Puntos de corte de la Pagina Web dado diferentes tipos de dispositivos */
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (max-width: 1200px) {
+    body {
+        font-size: 14px;
+        padding: 0px;
+    }
+
+    .contenedor {
+        grid-template-columns: 2fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            'titulo       titulo   '
+            'formulario   horarios'
+            'formulario   mapa';
+    }
+
+    .contenedor .contacto-formulario {
+        width: 400px;
+        height: 700px;
+    }
+
+    .contenedor .contacto-horarios {
+        width: 450px;
+        height: 400px;
+    }
+
+    .contenedor .contacto-mapa {
+        width: 450px;
+        height: 500px;
+    }
+
+    .contacto-mapa iframe {
+        width: 450px;
+        height: 350px;
+    }
+
+}
+
+/* large devices (desktops, 992px and up) */
+@media screen and (max-width: 992px) {
+    body {
+        font-size: 16px;
+        padding: .8em;
+    }
+
+    .contenedor {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            'titulo'
+            'formulario'
+            'horarios'
+            'mapa';
+    }
+
+    .contenedor .contacto-formulario {
+        width: 800px;
+        height: 100%;
+        margin: auto;
+    }
+
+    .contenedor .contacto-horarios {
+        width: 600px;
+        height: 550px;
+        margin: auto;
+    }
+
+    .contacto-horarios ul {
+        padding: 30px;
+    }
+
+    .contenedor .contacto-mapa {
+        width: 600px;
+        height: 500px;
+        margin-top: 40px;
+        margin-left: 50px;
+    }
+
+    .contacto-mapa iframe {
+        width: 600px;
+        height: 350px;
+        padding: 0px;
+        margin-left: 50px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    .contenedor {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            'titulo'
+            'formulario'
+            'horarios'
+            'mapa';
+    }
+
+    .contenedor .contacto-formulario {
+        width: 450px;
+        height: 900px;
+        margin: auto;
+    }
+
+    .contenedor .contacto-horarios {
+        width: 550px;
+        height: 500px;
+        margin: auto;
+    }
+
+    .contacto-horarios ul {
+        text-align: center;
+    }
+
+    .contenedor .contacto-mapa {    
+        width: 500px;
+        height: 500px;
+        margin-left: 0px;
+    }
+
+    .contacto-mapa iframe {
+        width: 500px;
+        height: 400px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
+    body {
+        font-size: 13px;
+    }
+
+    .contenedor {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            'titulo'
+            'formulario'
+            'horarios'
+            'mapa';
+    }
+
+    .contenedor .contacto-formulario {
+        width: 450px;
+        height: 800px;
+        margin: auto;
+    }
+
+    .contenedor .contacto-horarios {
+        width: 450px;
+        height: 500px;
+        margin: auto;
+    }
+
+    .contacto-horarios ul {
+        text-align: center;
+    }
+
+    .contenedor .contacto-mapa {
+        width: 500px;
+        height: 400px;
+        margin: auto;
+    }
+
+    .contacto-mapa iframe {
+        width: 450px;
+        height: 400px;
+        padding: 0px;
+        margin-left: 20px;
+    }
+}
