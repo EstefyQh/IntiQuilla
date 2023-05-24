@@ -14,7 +14,7 @@ let miHeader=`
 <div class="nav">
 <ul>
   <li><a class="nav-links" href="index.html">INICIO</a></li>
-  <li><a class="nav-links" href="#">NOVEDADES</a></li>
+  <li><a class="nav-links" href="novedades.html">NOVEDADES</a></li>
 
   <li class="dropdown"><a class="nav-links" href="#">LIBROS</a>
     <ul class="submenu">
