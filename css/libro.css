@@ -1,0 +1,91 @@
+* {
+    margin: 10px;
+    padding: 0;
+}
+
+body {
+    background: rgb(230, 230, 230);
+    color: #0e0101;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1000px;
+    /*ancho máximo de la página*/
+    margin: 20px auto;
+    /*auto permite centrar nuestra página en forma horizontal*/
+    display: grid;
+    gap: 20px;
+    /*nos ahorramos tenes que poner márgenes entre los elementos*/
+
+    /*3 columnas*/
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 0.5fr);
+    grid-template-areas: "imagen datalibro shop"
+        "redes   detalles detalles"
+        "pie pie pie";
+}
+
+.contenedor>div,
+.contenedor .imagen,
+.contenedor .datalibro,
+.contenedor .shop,
+.contenedor .detalles,
+.contenedor .redes,
+.contenedor .footer {
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.contenedor .imagen {
+    background: rgb(249, 249, 249);
+    color: #fff;
+    grid-area: imagen;
+}
+
+.contenedor .datalibro {
+    background: #ffffff;
+    grid-area: datalibro;
+}
+
+.contenedor .shop {
+    background: #ffffff;
+    grid-area: shop;
+}
+
+.contenedor .redes {
+    background: #ffffff;
+    grid-area: redes;
+}
+
+
+.contenedor .detalles {
+    background: #ffffff;
+    grid-area: detalles;
+}
+
+
+
+
+.contenedor .pie {
+    background: rgb(248, 248, 247);
+    color: #0d0101;
+    grid-area: pie;
+}
+
+@media screen and (max-width: 768px) {
+    .contenedor {
+        grid-template-areas: "imagen datalibro shop"
+            "redes detalles detalles"
+            "pie pie pie";
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .contenedor {
+        grid-template-areas: "imagen datalibro shop"
+            "redes detalles detalles"
+            "pie pie pie";
+    }
+}
