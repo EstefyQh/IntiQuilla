@@ -192,7 +192,7 @@ font-family: 'Hammersmith One', sans-serif;
   
 .va-title {
           margin-top: 8px;
-          font-size: 11px;
+          font-size: 16px;
           max-height: 3em;
           overflow: hidden;
           color: black;
@@ -206,7 +206,7 @@ font-family: 'Hammersmith One', sans-serif;
       }
   
  .va-start-from {
-          font-size: 9px;
+          font-size: 14px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -367,6 +367,7 @@ font-family: 'Hammersmith One', sans-serif;
     margin-bottom: 0;
     margin-top: 10px;
     padding-left: 0;
+    text-align: left;
 }
 .footer-menu-list li {
     margin-top: 5px;
@@ -496,7 +497,7 @@ font-family: 'Hammersmith One', sans-serif;
     width: 50px;
 }
 
-.footer-social-link.github {
+.footer-social-link.facebook {
     height: 55px;
     left: 170px;
     top: 7px;
@@ -531,7 +532,7 @@ font-family: 'Hammersmith One', sans-serif;
 }
 
 /* Media Query For different screens */
-@media (min-width:320px) and (max-width:479px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (min-width:320px) and (max-width:479px)  { 
   .footer-content {
     margin-left: auto;
     margin-right: auto;
@@ -540,7 +541,7 @@ font-family: 'Hammersmith One', sans-serif;
     position: relative;
   }
 }
-@media (min-width:480px) and (max-width:599px)  { /* smartphones, Android phones, landscape iPhone */
+@media (min-width:480px) and (max-width:599px)  { 
   .footer-content {
     margin-left: auto;
     margin-right: auto;
@@ -549,7 +550,7 @@ font-family: 'Hammersmith One', sans-serif;
     position: relative;
   }
 }
-@media (min-width:600px) and (max-width: 800px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (min-width:600px) and (max-width: 800px)  { 
   .footer-content {
     margin-left: auto;
     margin-right: auto;
@@ -558,13 +559,13 @@ font-family: 'Hammersmith One', sans-serif;
     position: relative;
   }
 }
-@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width:801px)  { 
 
 }
-@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
+@media (min-width:1025px) { 
 
 }
-@media (min-width:1281px) { /* hi-res laptops and desktops */
+@media (min-width:1281px) { 
 
 }
 
@@ -586,9 +587,7 @@ font-family: 'Hammersmith One', sans-serif;
   }
 }
 @media (min-width: 568px) {
-  /* .footer-content-column {
-      width: 49.99%;
-  } */
+
 }
 
 
