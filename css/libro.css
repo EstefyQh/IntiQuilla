@@ -1,30 +1,13 @@
-* {
-    margin: 10px;
-    padding: 0;
-}
-
-body {
-    background: rgb(230, 230, 230);
-    color: #0e0101;
-    font-family: 'Roboto', sans-serif;
-}
-
 .contenedor {
-    width: 90%;
-    max-width: 1000px;
-    /*ancho máximo de la página*/
+    width: 60%;
+    max-width:1224px;
     margin: 20px auto;
-    /*auto permite centrar nuestra página en forma horizontal*/
     display: grid;
     gap: 20px;
-    /*nos ahorramos tenes que poner márgenes entre los elementos*/
-
-    /*3 columnas*/
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 0.5fr);
     grid-template-areas: "imagen datalibro shop"
-        "redes   detalles detalles"
-        "pie pie pie";
+        "detalles detalles detalles";
 }
 
 .contenedor>div,
@@ -34,13 +17,12 @@ body {
 .contenedor .detalles,
 .contenedor .redes,
 .contenedor .footer {
-    padding: 20px;
+    padding: 15px;
     border-radius: 4px;
 }
 
 .contenedor .imagen {
     background: rgb(249, 249, 249);
-    color: #fff;
     grid-area: imagen;
 }
 
@@ -59,33 +41,62 @@ body {
     grid-area: redes;
 }
 
-
 .contenedor .detalles {
     background: #ffffff;
     grid-area: detalles;
 }
 
-
-
-
-.contenedor .pie {
-    background: rgb(248, 248, 247);
-    color: #0d0101;
-    grid-area: pie;
+.redes{
+    list-style: none;
+    text-align: left;
+margin-left: 3em;
 }
-
+.redes li {
+    display: inline;
+    
+}
+.redes li img{
+    width: 18%;
+}
+.imagen{
+    border: 5px;
+    border-color: black;
+}
+.portada{
+    width: 90%;
+}
+.listadetalles{
+padding-left: 0px;
+}
+.dettitulo{
+    font-weight: bold;
+    font-size: 16px;
+}
+.librodet{
+    margin-bottom: .9em;
+}
 @media screen and (max-width: 768px) {
     .contenedor {
         grid-template-areas: "imagen datalibro shop"
-            "redes detalles detalles"
-            "pie pie pie";
+        "detalles detalles detalles";
     }
 }
 
 @media screen and (max-width: 450px) {
     .contenedor {
         grid-template-areas: "imagen datalibro shop"
-            "redes detalles detalles"
-            "pie pie pie";
+            "detalles detalles detalles";
     }
+}
+@media only screen and (min-width: 990px) and (max-width: 2650px){
+.md-datos ul {
+    list-style:none;
+    text-align:left;
+
+}
+}
+.md-datos #idLibroprecio {
+    text-align: left;
+    padding-left: 0px;
+
 }
